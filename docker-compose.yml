@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  bitespeed-app-server:
+    build: .
+    ports:
+      - "8080:8080"
+    networks:
+      - bitespeed-network
+    depends_on:
+      - bitespeed-mysql-server
+
+
+
+
+
+  bitespeed-mysql-server:
+    image: mysql
+    restart: always
+    networks:
+      - bitespeed-network
+    environment:
+       MYSQL_ROOT_PASSWORD: Animal@123
+    ports:
+      - '3310:3306'
+    expose:
+      - '3310'
+    volumes:
+      - bitespeed-mysql-server:/var/lib/mysql
+
+networks:
+  bitespeed-network:
+volumes:
+  bitespeed-mysql-server:

@@ -8,10 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/api/customer")
 @RestController
@@ -29,6 +26,11 @@ public class CustomerController {
     public ResponseEntity<CustomerContactResponse> identifyCustomerContact(@RequestBody CustomerContactRequest customerContactRequest){
         logger.info("CUSTOMER_CONTROLLER_STARTED >>>");
         return customerContactMappingService.identifyCustomerContact(customerContactRequest);
+    }
+
+    @GetMapping("/testEndpoint")
+    public String testEndPoint(){
+        return " Test Done";
     }
 }
 
